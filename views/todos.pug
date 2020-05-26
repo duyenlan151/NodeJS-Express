@@ -1,0 +1,12 @@
+h2 Todo List
+a(href="/todos/create")
+  button create
+form(action="/todos" method="GET")
+  input(name="q", type="text", value=value?value : '')
+  if (todoList.length > 0)
+    each todo in todoList  
+      ul 
+        li= todo.name
+  else 
+    ul 
+      li Không có kết quả
