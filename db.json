@@ -1,0 +1,27 @@
+{
+  "todoList": [
+    {
+      "id": 1,
+      "name": "Nấu Cơm"
+    },
+    {
+      "id": 2,
+      "name": "Đi học"
+    },
+    {
+      "id": 3,
+      "name": "Rửa bát"
+    },
+    {
+      "id": 4,
+      "name": "Học code tại CodersX"
+    },
+    {
+      "name": "Đi ngủ"
+    },
+    {
+      "name": "Học Angular 4"
+    }
+  ],
+  "todos": []
+}

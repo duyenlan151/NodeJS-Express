@@ -3,49 +3,45 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
-const express = require("express");
+const express = require('express');
 const app = express();
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 
-var todoList = [
-  {
-    id: 1,
-    name: "Đi học"
-  },
-  {
-    id: 2,
-    name: "Nấu Cơm"
-  },
-  {
-    id: 3,
-    name: "Rửa bát"
-  },
-  {
-    id: 4,
-    name: "Học code tại CodersX"
-  }
-];
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+ 
+const adapter = new FileSync('db.json')
+const db = low(adapter)
+
+db.defaults({ todos: [] })
+  .write()
+
 // set view engine pug
 app.set("view engine", "pug");
 app.set("views", "./views");
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) 
+// for parsing application/x-www-form-urlencoded
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
   response.render("./index");
 });
 
-app.get('/todos/create', (req, res) => {
-  res.render('create');
+app.get("/todos/create", (req, res) => {
+  res.render("create");
 });
-app.post('/todos/create', (req, res) => {
-  todoList.push(req.body);
-  res.redirect('/todos');
+
+app.post("/todos/create", (req, res) => {
+  db.get('todoList').push(req.body).write();
+  res.redirect("/todos");
 });
 
 app.get("/todos", (request, respone) => {
   var q = request.query.q;
   if (q) {
-    var matchedTodolist = todoList.filter(
+    var matchedTodolist = db.get('todoList').value().filter(
       todo => todo.name.toLowerCase().indexOf(q.toLowerCase()) !== -1
     );
     respone.render("./todos", {
@@ -54,7 +50,7 @@ app.get("/todos", (request, respone) => {
     });
   } else {
     respone.render("./todos", {
-      todoList: todoList
+      todoList: db.get('todoList').value()
     });
   }
 });
