@@ -1,0 +1,16 @@
+h3 create transaction
+form(method="POST", action='./create')
+  label(for='users') Users: 
+  select#users(name="userId")
+    each user in users
+      option(value=`${user.id}`)= user.name
+  br
+  br
+  label(for='books') Books: 
+  select#books(name="bookId")
+    each book in books
+      option(value=`${book.id}`)= book.title
+  br
+  br
+  button(type="submit") create
+button(onclick="javascript:window.history.back();") cancels

@@ -1,0 +1,25 @@
+a(href="/") Home
+h2 List users
+a(href="users/create")
+  button create
+br
+br
+form(action="/users/search" method="GET")
+  input(name="q", type="text", value=value?value : '')
+  button search
+if users.length > 0
+  ul
+    each user in users
+      li
+        span= user.name 
+        span &ensp;
+        span 
+          a(href="/users/view?id=" + user.id) view
+        span &ensp;
+        span 
+          a(href="/users/" + user.id + "/delete") delete
+        span &ensp;
+        span 
+          a(href="/users/create?action=update&id=" + user.id) update
+else 
+  p Không có kết quả
