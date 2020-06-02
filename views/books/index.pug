@@ -1,0 +1,26 @@
+h2 Books
+a(href="/books/create?action=create")
+  button create
+br
+br
+form(action="/books" method="GET")
+  input(name="q", type="text", value=value?value : '')
+  button search
+  if (books.length > 0)
+    ul
+      each book in books        
+        li
+          span= book.title 
+          span &ensp;
+          span 
+            a(href="/books/view?id=" + book.id) view
+          span &ensp;
+          span 
+            a(href="/books/" + book.id + "/delete") delete
+          span &ensp;
+          span 
+            a(href="/books/create?action=update&id=" + book.id) update            
+  else 
+    ul 
+      li Không có kết quả
+  

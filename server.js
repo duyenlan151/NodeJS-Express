@@ -11,9 +11,10 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
  
 const adapter = new FileSync('db.json')
-const db = low(adapter)
+const db = low(adapter);
+const shortid = require('shortid');
 
-db.defaults({ todos: [] })
+db.defaults({ books: [] })
   .write()
 
 // set view engine pug
@@ -29,31 +30,76 @@ app.get("/", (request, response) => {
   response.render("./index");
 });
 
-app.get("/todos/create", (req, res) => {
-  res.render("create");
-});
-
-app.post("/todos/create", (req, res) => {
-  db.get('todoList').push(req.body).write();
-  res.redirect("/todos");
-});
-
-app.get("/todos", (request, respone) => {
+// start route  ------->   books
+app.get("/books", (request, respone) => {
   var q = request.query.q;
   if (q) {
-    var matchedTodolist = db.get('todoList').value().filter(
-      todo => todo.name.toLowerCase().indexOf(q.toLowerCase()) !== -1
+    var matchedBooks = db.get('books').value().filter(
+      book => book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1
     );
-    respone.render("./todos", {
-      todoList: matchedTodolist,
+    respone.render("./books", {
+      books: matchedBooks,
       value: q
     });
   } else {
-    respone.render("./todos", {
-      todoList: db.get('todoList').value()
+    respone.render("./books", {
+      books: db.get('books').value()
     });
   }
 });
+
+app.get("/books/create", (req, res) => {
+  var action = req.query.action;
+  if(action == 'update'){
+    var id = req.query.id;
+    var value = db.get('books').find({ id: id}).value();
+    res.render("books/create", {
+      action: action, 
+      value: value
+    }); 
+  }else {
+    res.render("books/create", {
+      action: action
+    }); 
+  }
+});
+
+app.post("/books/create", (req, res) => {
+  var id = req.query.id;
+  if(id)
+  {
+      var books = db.get('books').find({ id: id});
+      if(books){
+        
+      }
+      db.get('books')
+        .find({id: id})
+        .assign(req.body)
+        .write();
+      res.redirect("/books");
+  } else {
+    req.body.id = shortid.generate();
+    db.get('books').push(req.body).write();
+    res.redirect("/books");
+  }
+  
+});
+
+app.get('/books/:id/delete', (req, res) => {
+  var id = req.params.id;
+  var index = db.get('books').indexOf({ id: id}).value();
+  db.get('books').splice(index, 1).write();
+  
+  res.redirect('/books');
+});
+
+app.get('/books/view', (req, res) => {
+  var id = req.query.id;
+  res.render('books/view', {
+    book: db.get('books').find({ id: id}).value()
+  })
+})
+// end route  ------->   books
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
