@@ -9,5 +9,8 @@ if transactions
         span= transaction.userId
         span  - 
         span= transaction.bookId
+        span  - 
+        span
+          a(href="transactions/" + transaction.id + "/complete")= transaction.isComplete
 else 
   p không có dữ liệu

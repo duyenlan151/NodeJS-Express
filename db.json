@@ -39,23 +39,14 @@
     {
       "id": "asdat-tww-67",
       "userId": "pl65ttkiQ",
-      "bookId": "NsF51klp"
+      "bookId": "NsF51klp",
+      "isComplete": false
     },
     {
       "userId": "pl65ttkiQ",
       "bookId": "asTakns35",
-      "id": "Y1_-U98jT"
-    },
-    {
-      "userId": "pl65ttkiQ",
-      "bookId": "NsF51klp",
-      "id": "o7NFI1TTb"
-    },
-    {
-      "userId": "lqf674xQ6",
-      "bookId": "M-D6f-aB-",
-      "id": "vFxW9-jip"
+      "id": "Y1_-U98jT",
+      "isComplete": false
     }
-  ],
-  "transaction": []
+  ]
 }

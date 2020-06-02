@@ -9,12 +9,11 @@ app.set("views", "./views");
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) 
 
-// start defined Router
+// start define Router
 const booksRoute = require('./routes/books.route');
 const usersRoute = require('./routes/users.route');
 const transactionsRoute = require('./routes/transactions.route');
-
-// end defined Router
+// end define Router
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
