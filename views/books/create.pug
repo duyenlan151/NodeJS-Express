@@ -1,0 +1,22 @@
+if (action== 'create')
+  h2 Create new book
+  form(method='POST', action='/books/create')
+    label Title
+    span &ensp;
+    input(type='text', name="title", value=value? value.title : '')
+    br
+    label Descrtiption
+    span &ensp;
+    input(type='text', name="description", value=value? value.description : '')
+    br
+    br
+    button create
+else if(action == 'update')
+  h2 Update book
+  form(method='POST', action='/books/create?id=' + value.id)
+    label Title
+    span &ensp;
+    input(type='text', name="title", value=value? value.title : '')
+    br
+    br
+    button update

@@ -3,6 +3,8 @@ dependencies:
   express: 4.17.1
   lowdb: 1.0.0
   pug: 2.0.4
+  routes: 2.1.0
+  shortid: 2.2.15
 packages:
   /@types/babel-types/7.0.7:
     dev: false
@@ -473,6 +475,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
+  /nanoid/2.1.11:
+    dev: false
+    resolution:
+      integrity: sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
   /negotiator/0.6.2:
     dev: false
     engines:
@@ -668,6 +674,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-YTObci/mo1FWiSENJOFMlhSGE+8=
+  /routes/2.1.0:
+    dev: false
+    resolution:
+      integrity: sha1-R1VxGSpI+ZtsBl3ZJrt16K6D6KI=
   /safe-buffer/5.1.2:
     dev: false
     resolution:
@@ -711,6 +721,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
+  /shortid/2.2.15:
+    dependencies:
+      nanoid: 2.1.11
+    dev: false
+    resolution:
+      integrity: sha512-5EaCy2mx2Jgc/Fdn9uuDuNIIfWBpzY4XIlhoqtXF6qsf+/+SGZ+FxDdX/ZsMZiWupIWNqAEmiNY4RC+LSmCeOw==
   /source-map/0.5.7:
     dev: false
     engines:
@@ -837,3 +853,5 @@ specifiers:
   express: ^4.17.1
   lowdb: ^1.0.0
   pug: ^2.0.4
+  routes: ^2.1.0
+  shortid: ^2.2.15
