@@ -1,24 +1,30 @@
-h2 List users
-a(href="users/create")
-  button create
-br
-br
-form(action="/users/search" method="GET")
-  input(name="q", type="text", value=value?value : '')
-  button search
-if users.length > 0
-  ul
-    each user in users
-      li
-        span= user.name 
-        span &ensp;
-        span 
-          a(href="/users/view?id=" + user.id) view
-        span &ensp;
-        span 
-          a(href="/users/" + user.id + "/delete") delete
-        span &ensp;
-        span 
-          a(href="/users/create?action=update&id=" + user.id) update
-else 
-  p Không có kết quả
+extends ../layouts/common.pug
+
+block content
+ div.container
+    h3.text-center.my-3.text-capitalize List users 
+    a(href="/users/create").text-light 
+      button.btn.btn-primary.mb-3 create
+    form(action="/users/search" method="GET")
+      div.input-group
+        input.form-control(name="q", type="text", value=value?value : '')
+        button.btn.btn-primary search
+
+    if users.length > 0
+      table.table
+            thead
+              tr
+                th User
+                th.text-right Actions
+            tbody
+              each user in users
+                tr
+                  td= user.name 
+                  td.text-right
+                    span 
+                      a(href="/users/" + user.id + "/delete") delete
+                    span &ensp;
+                    span 
+                      a(href="/users/create?action=update&id=" + user.id) update
+    else 
+      p Không có kết quả

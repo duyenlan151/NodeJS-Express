@@ -1,0 +1,22 @@
+html
+  head
+    title NodeJS - Express
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
+  body
+    div.container-fluid
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        div.container
+          a.navbar-brand(href='/') Home
+          button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbarNav.collapse.navbar-collapse
+            uls.navbar-nav
+              li.nav-item.active
+                a.nav-link(href='/books')
+                  | Books 
+                  span.sr-only (current)
+              li.nav-item
+                a.nav-link(href='/users') Users
+              li.nav-item
+                a.nav-link(href='/transactions') Transactions
+      block content
