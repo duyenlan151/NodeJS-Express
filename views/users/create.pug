@@ -1,3 +1,6 @@
+
+
+
 if(action === 'update')
   h3 Update user 
   form(method="POST", action="/users/create?action=update&id=" + value.id)
@@ -10,5 +13,3 @@ else
     label(for="name") Name 
     input(type="text", id="name", name="name" value=value ? value.name : '')
     button create    
-    
-button(onclick="javascript:window.history.back();") cancel
