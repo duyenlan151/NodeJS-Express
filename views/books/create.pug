@@ -1,23 +1,24 @@
-extends ../layouts/common.pug
-
-block content
-  div.container
-    if (action== 'create')
-      h2.text-center.my-3.text-capitalize Create new book
-      form(method='POST', action='/books/create')
-        div.form-group
-          label Title:
-          input.form-control(type='text', name="title", value=value? value.title : '')
-        div.form-group
-          label Description: 
-          input.form-control(type='text', name="description", value=value? value.description : '')
-        button.btn.btn-primary.mr-2 create
-        button.btn.btn-danger(onclick="javascript:window.history.back();") cancel
-    else if(action == 'update')
-      h2.text-center.my-3.text-capitalize Update book
-      form(method='POST', action='/books/create?id=' + value.id)
-        div.form-group
-          label Title:
-          input.form-control(type='text', name="title", value=value? value.title : '')
-        button.btn.btn-primary.mr-2 update
-        button.btn.btn-danger(onclick="javascript:window.history.back();") cancel
+if (action== 'create')
+  h2 Create new book
+  form(method='POST', action='/books/create')
+    label Title
+    span &ensp;
+    input(type='text', name="title", value=value? value.title : '')
+    br
+    label Descrtiption
+    span &ensp;
+    input(type='text', name="description", value=value? value.description : '')
+    br
+    br
+    button create
+else if(action == 'update')
+  h2 Update book
+  form(method='POST', action='/books/create?id=' + value.id)
+    label Title
+    span &ensp;
+    input(type='text', name="title", value=value? value.title : '')
+    br
+    br
+    button update
+    
+button(onclick="javascript:window.history.back();") cancel

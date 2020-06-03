@@ -31,7 +31,7 @@
       "id": "k9ioqUUD0"
     },
     {
-      "name": "Linh",
+      "name": "Duyên",
       "id": "lqf674xQ6"
     }
   ],
@@ -40,25 +40,13 @@
       "id": "asdat-tww-67",
       "userId": "pl65ttkiQ",
       "bookId": "NsF51klp",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "userId": "pl65ttkiQ",
       "bookId": "asTakns35",
       "id": "Y1_-U98jT",
       "isComplete": false
-    },
-    {
-      "userId": "k9ioqUUD0",
-      "bookId": "72gaYuql",
-      "id": "WKXDbhM5-",
-      "isComplete": false
-    },
-    {
-      "userId": "pl65ttkiQ",
-      "bookId": "asTakns35",
-      "id": "U4F4HU3c0",
-      "isComplete": true
     }
   ]
 }

@@ -1,23 +1,16 @@
-extends ../layouts/common.pug
-
-block content
-  div.container
-    h2.text-center.my-3.text-capitalize Transaction infor
-    button.btn.btn-primary.mb-3 
-      a(href="transactions/create").text-light create
-    if transactions
-     table.table
-        thead
-          tr
-            th User - Id
-            th Book - Id
-            th isComplete
-        tbody
-          each transaction in transactions
-            tr
-              td= transaction.userId
-              td= transaction.bookId
-              td 
-                a(class= transaction.isComplete === true ? "text-success" : "text-danger" href="transactions/" + transaction.id + "/complete")= transaction.isComplete
-    else 
-      p không có dữ liệu
+a(href="/") Home
+h2 Transaction infor
+button  
+  a(href="transactions/create") create
+if transactions
+  ul 
+    each transaction in transactions
+      li
+        span= transaction.userId
+        span  - 
+        span= transaction.bookId
+        span  - 
+        span
+          a(href="transactions/" + transaction.id + "/complete")= transaction.isComplete
+else 
+  p không có dữ liệu

@@ -1,18 +1,16 @@
-extends ../layouts/common.pug
-
-block content
-  div.container.mx-auto
-    h4.text-center.text-capitalize.my-5 create transaction
-    form(method="POST", action='./create')
-      div.form-group
-        label(for='users') Select User: 
-        select#users.form-control(name="userId")
-          each user in users
-            option(value=`${user.id}`)= user.name
-      div.form-group
-        label(for='books') Select Book: 
-        select#books.form-control(name="bookId")
-          each book in books
-            option(value=`${book.id}`)= book.title
-      button.btn.btn-primary.mr-2(type="submit") create
-      button.btn.btn-danger(onclick="javascript:window.history.back();") cancel
+h3 create transaction
+form(method="POST", action='./create')
+  label(for='users') Users: 
+  select#users(name="userId")
+    each user in users
+      option(value=`${user.id}`)= user.name
+  br
+  br
+  label(for='books') Books: 
+  select#books(name="bookId")
+    each book in books
+      option(value=`${book.id}`)= book.title
+  br
+  br
+  button(type="submit") create
+button(onclick="javascript:window.history.back();") cancels
