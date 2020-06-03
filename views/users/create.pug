@@ -1,14 +1,20 @@
-if(action === 'update')
-  h3 Update user 
-  form(method="POST", action="/users/create?action=update&id=" + value.id)
-    label(for="name") Name 
-    input(type="text", id="name", name="name" value=value ? value.name : '')
-    button update
-else 
-  h3 Create new user
-  form(method="POST", action="/users/create?")
-    label(for="name") Name 
-    input(type="text", id="name", name="name" value=value ? value.name : '')
-    button create    
-    
-button(onclick="javascript:window.history.back();") cancel
+extends ../layouts/common.pug
+
+block content
+  div.container
+    if(action === 'update')
+      h3.text-center.my-3.text-capitalize Update user 
+      form(method="POST", action="/users/create?action=update&id=" + value.id)
+        div.form-group
+          label(for="name") Name: 
+          input.form-control(type="text", id="name", name="name" value=value ? value.name : '')
+        button.mr-3.btn.btn-success update
+        button.btn.btn-danger(onclick="javascript:window.history.back();") cancel
+    else 
+      h3.text-center.my-3.text-capitalize Create new user
+      form(method="POST", action="/users/create?")
+        div.form-group
+          label(for="name") Name: 
+          input.form-control(type="text", id="name", name="name" value=value ? value.name : '', placeholder="Enter name")
+        button.mr-2.btn.btn-primary create    
+        button.btn.btn-danger(onclick="javascript:window.history.back();") cancel

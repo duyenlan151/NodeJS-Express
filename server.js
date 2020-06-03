@@ -15,12 +15,11 @@ const usersRoute = require('./routes/users.route');
 const transactionsRoute = require('./routes/transactions.route');
 // end define Router
 
-// https://expressjs.com/en/starter/basic-routing.html
+// start route 
 app.get("/", (request, response) => {
   response.render("./index");
 });
-
-// start route  
+ 
 app.use('/books', booksRoute);
 app.use('/users', usersRoute);
 app.use('/transactions', transactionsRoute);

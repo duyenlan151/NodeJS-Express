@@ -1,26 +1,32 @@
-a(href="/") Home
-h2 Books
-a(href="/books/create?action=create")
-  button create
-br
-br
-form(action="/books" method="GET")
-  input(name="q", type="text", value=value?value : '')
-  button search
-  if (books.length > 0)
-    ul
-      each book in books        
-        li
-          span= book.title 
-          span &ensp;
-          span 
-            a(href="/books/view?id=" + book.id) view
-          span &ensp;
-          span 
-            a(href="/books/" + book.id + "/delete") delete
-          span &ensp;
-          span 
-            a(href="/books/create?action=update&id=" + book.id) update            
-  else 
-    ul 
-      li Không có kết quả
+extends ../layouts/common.pug
+
+block content
+  div.container
+    h2.text-center.my-3.text-capitalize Books
+    a(href="/books/create?action=create")
+      button.btn.btn-primary.mb-2 create
+    form(action="/books" method="GET")
+      div.input-group
+        input.form-control(name="q", type="text", value=value?value : '')
+        button.btn.btn-primary search
+    if (books.length > 0)
+      table.table
+            thead
+              tr
+                th Title
+                th.text-right Actions
+            tbody
+              each book in books     
+                tr
+                  td= book.title
+                  td.text-right
+                    span 
+                      a(href="/books/view?id=" + book.id) view
+                    span &ensp;
+                    span 
+                      a(href="/books/" + book.id + "/delete") delete
+                    span &ensp;
+                    span 
+                      a(href="/books/create?action=update&id=" + book.id) update            
+    else 
+      p Không có kết quả
