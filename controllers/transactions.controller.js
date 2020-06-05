@@ -33,10 +33,18 @@ module.exports.postCreate = (req, res) => {
 module.exports.isComplete = (req, res) => {
   var id = req.params.id;
   var check = db.get('transactions').find({id: id}).value();
-  db.get('transactions')
-    .find({id: id})
-    .assign({ isComplete: !check.isComplete})
-    .write();
-  res.redirect('/transactions');
+  if(check){
+    db.get('transactions')
+      .find({id: id})
+      .assign({ isComplete: !check.isComplete})
+      .write();
+    res.redirect('/transactions');
+  }else{
+    res.render('transactions', {
+      transactions: db.get('transactions').value(),
+      message: "Action deny(User does not exist.)"
+    });
+    return;
+  }
 }
 

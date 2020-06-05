@@ -1,8 +1,11 @@
-h2 View Book
+extends ../layouts/common.pug
 
-p Title: 
-  span= book.title
-p Description: 
-  span= book.description
-  
-button(onclick="javascript:window.history.back();") go back
+block content
+  div.container.text-center
+    h3.text-capitalize.my-3 View Book
+    p Title: 
+      span= book.title
+    p Description: 
+      span= book.description
+
+    button.btn.btn-primary(onclick="javascript:window.history.back();") go back

@@ -1,0 +1,10 @@
+extends ../layouts/common.pug
+
+block content
+  div.container
+    if message
+      .alert.alert-danger(role='alert')= message 
+    else 
+      h3 Page Not Found
+
+  

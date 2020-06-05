@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+
 // set view engine pug
 app.set("view engine", "pug");
 app.set("views", "./views");
@@ -15,15 +16,21 @@ const usersRoute = require('./routes/users.route');
 const transactionsRoute = require('./routes/transactions.route');
 // end define Router
 
-// https://expressjs.com/en/starter/basic-routing.html
+// set static files
+app.use(express.static('public'))
+
+
+// start route 
 app.get("/", (request, response) => {
   response.render("./index");
 });
-
-// start route  
+ 
 app.use('/books', booksRoute);
 app.use('/users', usersRoute);
 app.use('/transactions', transactionsRoute);
+app.get('*', function(req, res){
+  res.render('layouts/404');
+});
 // end route  
 
 // listen for requests :)
