@@ -2,6 +2,8 @@ extends ../layouts/common.pug
 
 block content
   div.container
+    if message
+      .alert.alert-danger(role='alert')= message 
     h2.text-center.my-3.text-capitalize Transaction infor
     button.btn.btn-primary.mb-3 
       a(href="transactions/create").text-light create
@@ -18,6 +20,6 @@ block content
               td= transaction.userId
               td= transaction.bookId
               td 
-                a(class= transaction.isComplete === true ? "text-success" : "text-danger" href="transactions/" + transaction.id + "/complete")= transaction.isComplete
+                a(class= transaction.isComplete === true ? "text-success" : "text-danger" href="/transactions/" + transaction.id + "/complete")= transaction.isComplete
     else 
       p không có dữ liệu
