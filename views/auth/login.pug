@@ -1,0 +1,16 @@
+extends ../layouts/common.pug
+
+block content
+  div.container
+    h3.text-center.my-3.text-capitalize Login
+    if message
+      .alert.alert-danger(role='alert')= message 
+    form(method="POST", action="/auth/login")
+      div.form-group
+        label(for="email") Email: 
+        input.form-control(type="email", id="email", name="email", value=value ? value.email : '')
+      div.form-group        
+        label(for="password") Password: 
+        input.form-control(type="password", id="password", name="password" ,value=value ? value.password : '')
+      button.mr-3.btn.btn-primary login
+    button.btn.btn-danger(onclick="javascript:window.history.back();") cancel

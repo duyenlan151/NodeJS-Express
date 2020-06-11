@@ -5,12 +5,14 @@ block content
     h3.text-center.my-3.text-capitalize List users 
     a(href="/users/create").text-light 
       button.btn.btn-primary.mb-3 create
+    if message
+      .alert.alert-danger(role='alert')= message 
     form(action="/users/search" method="GET")
       div.input-group
         input.form-control(name="q", type="text", value=value?value : '')
         button.btn.btn-primary search
 
-    if users.length > 0
+    if users
       table.table
             thead
               tr
@@ -28,3 +30,11 @@ block content
                       a(href="/users/create?action=update&id=" + user.id) update
     else 
       p Không có kết quả
+      
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="users?page=1">1</a></li>
+        <li class="page-item"><a class="page-link" href="users?page=2">2</a></li>
+        <li class="page-item"><a class="page-link" href="users?page=3">3</a></li>
+      </ul>
+    </nav>
