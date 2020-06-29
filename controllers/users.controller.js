@@ -4,6 +4,7 @@ const md5 = require("md5");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+
 module.exports.index = (req, res) => {
   var listUsers = [];
   //if (req.cookies.cookieId) {
@@ -55,6 +56,7 @@ module.exports.postCreate = (req, res) => {
     res.redirect("/users");
   } else {
     req.body.id = shortid.generate();
+    req.body.avatar = req.file.path.split('/').slice(1).join('/')
     // req.body.password = md5(req.body.password);
     const salt = bcrypt.genSaltSync(saltRounds);
     req.body.password = bcrypt.hashSync(req.body.password, saltRounds);

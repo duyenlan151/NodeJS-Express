@@ -15,7 +15,7 @@ block content
       button.btn.btn-danger(onclick="javascript:window.history.back();") cancel
     else 
       h3.text-center.my-3.text-capitalize Create new user
-      form(method="POST", action="/users/create?")
+      form(method="POST", action="/users/create?", enctype="multipart/form-data")
         div.form-group
           label(for="name") Name: 
           input.form-control(type="text", id="name", name="name" value=value ? value.name : '', placeholder="Enter your name")
@@ -25,5 +25,8 @@ block content
         div.form-group        
           label(for="email") Email: 
           input.form-control(type="email", id="email", name="email" value=value ? value.name : '', placeholder="Enter your email")
+        div.form-group        
+          label(for="avatar") Avatar: 
+          input.form-control(type="file", id="avatar", name="avatar")
         button.mr-2.btn.btn-primary create    
       button.btn.btn-danger(onclick="javascript:window.history.back();") cancel

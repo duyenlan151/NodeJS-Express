@@ -60,6 +60,19 @@
       "password": "$2b$10$/3BNlUhXabLOYIb/Bkmf3OJV15Hl9oFWp9OmIy5oF9QJDkO7FBhf2",
       "email": "long@gmail.com",
       "id": "ANTvjSZG2"
+    },
+    {
+      "name": "khang",
+      "password": "$2b$10$oy5l8LdAH9v/cMznnNkA8efHacLWAlCsM52hkDZRX2lLn/l3q92ki",
+      "email": "khang@gmail.com",
+      "id": "Vx7CYqDpQ"
+    },
+    {
+      "name": "bin",
+      "password": "$2b$10$syJsK57VMUuU7G.RgipZvuLRZb6qZze0xMznVzB2xNLYA4dI/pFBu",
+      "email": "bin@gmail.com",
+      "id": "oVOZo7sPg",
+      "avatar": "uploads/826932bfacbec885c2a91ae2cb6570a0"
     }
   ],
   "transactions": [

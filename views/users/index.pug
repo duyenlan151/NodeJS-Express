@@ -17,11 +17,13 @@ block content
             thead
               tr
                 th User
+                th Avatar
                 th.text-right Actions
             tbody
               each user in users
                 tr
                   td= user.name 
+                  td= user.avatar ? user.avatar : ''
                   td.text-right
                     span 
                       a(href="/users/" + user.id + "/delete") delete
